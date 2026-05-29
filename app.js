@@ -43,8 +43,8 @@ function build(){
   }
 }
 build();
-function tog(br){on[br]=!on[br];document.getElementById('sw-'+br).classList.toggle('on',on[br]);build();}
-function togCluster(){clusterOn=!clusterOn;document.getElementById('sw-cl').classList.toggle('on',clusterOn);build();}
-function togHot(){hotOn=!hotOn;document.getElementById('sw-hot').classList.toggle('on',hotOn);build();}
+window.tog=function(br){on[br]=!on[br];document.getElementById('sw-'+br).classList.toggle('on',on[br]);build();}
+window.togCluster=function(){clusterOn=!clusterOn;document.getElementById('sw-cl').classList.toggle('on',clusterOn);build();}
+window.togHot=function(){hotOn=!hotOn;document.getElementById('sw-hot').classList.toggle('on',hotOn);build();}
 
 }).catch(e=>{document.getElementById('map').innerHTML='<div style="padding:40px;font-family:sans-serif">Nie udało się wczytać data.json: '+e+'</div>';});
