@@ -4,19 +4,20 @@ fetch('data.json').then(r=>r.json()).then(DATA=>{
 document.getElementById('cz').textContent=C.Z.toLocaleString('pl-PL');
 document.getElementById('cb').textContent=C.B.toLocaleString('pl-PL');
 document.getElementById('cd').textContent=C.D.toLocaleString('pl-PL');
+document.getElementById('cl').textContent=C.L.toLocaleString('pl-PL');
 
-const COL={Z:'#00a651',B:'#e2001a',D:'#f5a623'};
-const NAME={Z:'Żabka',B:'Biedronka',D:'Dino'};
+const COL={Z:'#00a651',B:'#e2001a',D:'#f5a623',L:'#0050aa'};
+const NAME={Z:'Żabka',B:'Biedronka',D:'Dino',L:'Lidl'};
 const map=L.map('map',{preferCanvas:true}).setView([52.0,19.3],6);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
   {attribution:'© OpenStreetMap © CARTO',maxZoom:19,subdomains:'abcd'}).addTo(map);
 
-let on={Z:true,B:true,D:true}, clusterOn=true, hotOn=false;
+let on={Z:true,B:true,D:true,L:true}, clusterOn=true, hotOn=false;
 let layers={};
 
 function build(){
   Object.values(layers).forEach(l=>map.removeLayer(l)); layers={};
-  for(const br of ['Z','B','D']){
+  for(const br of ['Z','B','D','L']){
     if(!on[br]) continue;
     const markers=[];
     for(const r of S){
